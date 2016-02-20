@@ -1,5 +1,5 @@
 <?php
-#12
+#13
 
 
 define('DB_DATABASE', 'dotinstall_db');
@@ -15,25 +15,18 @@ try {
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-  // $stmt = $db->prepare("update users set score = :score where name = :name");
-  // $stmt->execute([
-  // 	':score' => 100,
-  // 	'name' => 'taguchi'
-  // ]);
-  // echo 'row update: ' . $stmt->rowCount();
+  $db->beginTransaction();
+  $db->exec("update users set score = score - 10000 where name = 'yoshitsugu'");
+  $db->exec("update users set score22222 = score + 10 where name = 'yoshitsugu'");
+  $db->commit();
 
-
-  $stmt = $db->prepare("delete from users where name = :name");
-  $stmt->execute([
-  	'name' => 'taguchi'
-  ]);
-  echo 'row deleted: ' . $stmt->rowCount();  
 
 
   //disconnect
   $db = null;
   
 }catch (PDOException $e){
+	$db->rollback();
 	echo $e->getMessage();
 	exit;
 
