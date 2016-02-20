@@ -1,5 +1,5 @@
 <?php
-#05
+#06
 
 
 define('DB_DATABASE', 'dotinstall_db');
@@ -12,8 +12,8 @@ try {
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   
-  $stmt = $db->prepare("insert into users (name, score) values (?, ?)");
-  $stmt->execute(['taguchi', 44]);
+  $stmt = $db->prepare("insert into users (name, score) values (:name, :score)");
+  $stmt->execute([':name'=>'susumu', ':score'=>80]);
   echo "inserted: " . $db->lastInsertId();
 
 
