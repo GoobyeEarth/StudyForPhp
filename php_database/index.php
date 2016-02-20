@@ -1,5 +1,5 @@
 <?php
-#04
+#05
 
 
 define('DB_DATABASE', 'dotinstall_db');
