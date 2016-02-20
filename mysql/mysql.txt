@@ -1,0 +1,779 @@
+Last login: Fri Feb 19 09:23:30 on ttys000
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock' (2 "No such file or directory")
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 5
+Server version: 10.1.10-MariaDB Source distribution
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+MariaDB [(none)]> Ctrl-C -- exit!
+Aborted
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 6
+Server version: 10.1.10-MariaDB Source distribution
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database blog_app;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| blog_app           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.02 sec)
+
+MariaDB [(none)]> drop database blog_app;
+Query OK, 0 rows affected (0.01 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [(none)]> use mysql
+Database changed
+MariaDB [mysql]> use test
+Database changed
+MariaDB [test]> crate database blog_app;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'crate database blog_app' at line 1
+MariaDB [test]> grant all on blog_app.* to dbuser@localhost identified by '123qwe';
+Query OK, 0 rows affected (0.01 sec)
+
+MariaDB [test]> exit
+Bye
+aberintaronoAir:~ aberintaro$ mysql -u dbuser -p blog_app
+-bash: mysql: command not found
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app
+Enter password: 
+ERROR 1049 (42000): Unknown database 'blog_app'
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p blog_app
+Enter password: 
+ERROR 1049 (42000): Unknown database 'blog_app'
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u root -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.1.10-MariaDB Source distribution
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+MariaDB [(none)]> create database blog_app;
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| blog_app           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [(none)]> exit;
+Bye
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.1.10-MariaDB Source distribution
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [blog_app]> create table users(
+    -> id int, 
+    -> name varchar(255),
+    -> email varchar(255),
+    -> password char(32));
+Query OK, 0 rows affected (0.09 sec)
+
+MariaDB [blog_app]> show tables;
++--------------------+
+| Tables_in_blog_app |
++--------------------+
+| users              |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [blog_app]> show users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'users' at line 1
+MariaDB [blog_app]> show table users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'users' at line 1
+MariaDB [blog_app]> drop table users;
+Query OK, 0 rows affected (0.02 sec)
+
+MariaDB [blog_app]> create table users(
+    -> id int auto_increment primary key,
+    -> name varchar(255),
+    -> email varchar(255) unique,
+    -> password char(33),
+    -> score double,
+    -> sex enum(‘male’, ‘female’) default ‘male’,
+    -> memo text,
+    -> created diatomite,
+    -> key score(score)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '‘male’, ‘female’) default ‘male’,
+memo text,
+created diatomite,
+key ' at line 7
+MariaDB [blog_app]> create table users( id int auto_increment primary key, name varchar(255), email varchar(255) unique, password char(33), score double, sex enum(‘male’, ‘female’) default ‘male’, memo text, created datetime, key score(score) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '‘male’, ‘female’) default ‘male’, memo text, created datetime, key s' at line 1
+MariaDB [blog_app]> create table users(                                                                                     -> id int auto_increment primary key,
+    -> name varchar(255),
+    -> email varchar(255) unique,
+    -> password char(32),
+    -> score double,
+    -> sex enum(‘male’, ‘female’) default ‘male’,
+    -> memo text,
+    -> created datetime,
+    -> key score(score)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '‘male’, ‘female’) default ‘male’,
+memo text,
+created datetime,
+key s' at line 7
+MariaDB [blog_app]> create table users( id int auto_increment primary key, name varchar(255), email varchar(255) unique, password char(32), score double, sex enum('male', 'female') default 'male', memo text, created datetime, key score(score) );
+Query OK, 0 rows affected (0.05 sec)
+
+MariaDB [blog_app]> insert into user (name, email, password, score, memo, created) values
+    -> ('taguchi'm 'taguchi@gmail.com','xxx',5.5, 'hogehogeheogegehe', '2012-06-12 11:00:00');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'm 'taguchi@gmail.com','xxx',5.5, 'hogehogeheogegehe', '2012-06-12 11:00:00')' at line 2
+MariaDB [blog_app]> insert into user (name, email, password, score, memo, created) values ('taguchi', 'taguchi@gmail.com','xxx',5.5, 'hogehogeheogegehe', '2012-06-12 11:00:00');
+ERROR 1146 (42S02): Table 'blog_app.user' doesn't exist
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values ('taguchi', 'taguchi@gmail.com','xxx',5.5, 'hogehogeheogegehe', '2012-06-12 11:00:00');
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values ('taguchi', 'taguchi@gmail.com','xxx',5.5, 'hogehogeheogegehe', '2012-06-12 11:00:00');
+ERROR 1062 (23000): Duplicate entry 'taguchi@gmail.com' for key 'email'
+MariaDB [blog_app]> select *from users;
++----+---------+-------------------+----------+-------+------+-------------------+---------------------+
+| id | name    | email             | password | score | sex  | memo              | created             |
++----+---------+-------------------+----------+-------+------+-------------------+---------------------+
+|  1 | taguchi | taguchi@gmail.com | xxx      |   5.5 | male | hogehogeheogegehe | 2012-06-12 11:00:00 |
++----+---------+-------------------+----------+-------+------+-------------------+---------------------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values ('taguchi', 'taguchi@gmail.com','xxx',5.5, 'hogehogeheogegehe', '2012-06-12 11:00:00');insert into users (name, email, password, score, memo, created) values 
+ERROR 1062 (23000): Duplicate entry 'taguchi@gmail.com' for key 'email'
+    -> ('fkoji', 'fkozi@gmail.com','xxx',8.2, 'hogehogeheogegehe', '2012-07-12 11:00:00');
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values 
+    -> ('dot', 'dot@gmail.com','xxx', 2.2, 'hogehogeheogegehe', '2012-08-12 11:00:00');
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [blog_app]> 
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values 
+    -> ('sas', 'sas@gmail.com','xxx',4.5, 'hogehogeheogegehe', '2012-09-12 11:00:00');
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values                                  -> ('kim', '','xxx',7.4, 'hogehogeheogegehe', '2012-10-12 11:00:00');
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values 
+    -> ('tan', 'tan@gmail.com','xxx',tan, 'hogehogeheogegehe', '2012-07-12 11:00:00');
+ERROR 1054 (42S22): Unknown column 'tan' in 'field list'
+MariaDB [blog_app]> 
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values 
+    -> ('tan', 'tan@gmail.com','xxx',tan, 'hogehogeheogegehe', '2012-07-12 11:00:00');
+ERROR 1054 (42S22): Unknown column 'tan' in 'field list'
+MariaDB [blog_app]> 
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values 
+    -> ('tan', 'tan@gmail.com','xxx',tan, 'hogehogeheogegehe', '2012-07-12 11:00:00');
+ERROR 1054 (42S22): Unknown column 'tan' in 'field list'
+MariaDB [blog_app]> insert into users (name, email, password, score, memo, created) values  ('tan', 'tan@gmail.com','xxx',tan, 'hogehogeheogegehe', '2012-07-12 11:00:00');insert into users (name, email, password, score, memo, created) values 
+ERROR 1054 (42S22): Unknown column 'tan' in 'field list'
+    -> ('tan', 'tan@gmail.com','xxx',1.1, 'hogehogeheogegehe', '2012-07-12 11:00:00');insert into users (name, email, password, score, memo, created) values 
+Query OK, 1 row affected (0.01 sec)
+
+    -> ('tan', 'tan@gmail.com','xxx',1.1, 'hogehogeheogegehe', '2012-07-12 11:00:00');
+ERROR 1062 (23000): Duplicate entry 'tan@gmail.com' for key 'email'
+MariaDB [blog_app]> select * from users \G;
+*************************** 1. row ***************************
+      id: 1
+    name: taguchi
+   email: taguchi@gmail.com
+password: xxx
+   score: 5.5
+     sex: male
+    memo: hogehogeheogegehe
+ created: 2012-06-12 11:00:00
+*************************** 2. row ***************************
+      id: 4
+    name: fkoji
+   email: fkozi@gmail.com
+password: xxx
+   score: 8.2
+     sex: male
+    memo: hogehogeheogegehe
+ created: 2012-07-12 11:00:00
+*************************** 3. row ***************************
+      id: 5
+    name: dot
+   email: dot@gmail.com
+password: xxx
+   score: 2.2
+     sex: male
+    memo: hogehogeheogegehe
+ created: 2012-08-12 11:00:00
+*************************** 4. row ***************************
+      id: 6
+    name: sas
+   email: sas@gmail.com
+password: xxx
+   score: 4.5
+     sex: male
+    memo: hogehogeheogegehe
+ created: 2012-09-12 11:00:00
+*************************** 5. row ***************************
+      id: 7
+    name: kim
+   email: 
+password: xxx
+   score: 7.4
+     sex: male
+    memo: hogehogeheogegehe
+ created: 2012-10-12 11:00:00
+*************************** 6. row ***************************
+      id: 8
+    name: tan
+   email: tan@gmail.com
+password: xxx
+   score: 1.1
+     sex: male
+    memo: hogehogeheogegehe
+ created: 2012-07-12 11:00:00
+6 rows in set (0.00 sec)
+
+ERROR: No query specified
+
+MariaDB [blog_app]> select name from users where score <= 3;
++------+
+| name |
++------+
+| tan  |
+| dot  |
++------+
+2 rows in set (0.01 sec)
+
+MariaDB [blog_app]> select name from users where email like '%tan%';
++------+
+| name |
++------+
+| tan  |
++------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select name from users where email like '_an%';
++------+
+| name |
++------+
+| tan  |
++------+
+1 row in set (0.00 sec)
+
+MariaDB [blog_app]> select name from users where score between 3 and 4;
+Empty set (0.00 sec)
+
+MariaDB [blog_app]> select name from users where name in('tan' , 'd_t');
++------+
+| name |
++------+
+| tan  |
++------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select name from users where name in('tan' , 'dot');
++------+
+| name |
++------+
+| dot  |
+| tan  |
++------+
+2 rows in set (0.00 sec)
+
+MariaDB [blog_app]> select + from user order by nmae desc limit 5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'from user order by nmae desc limit 5' at line 1
+MariaDB [blog_app]> select * from user order by nmae desc limit 5;
+ERROR 1146 (42S02): Table 'blog_app.user' doesn't exist
+MariaDB [blog_app]> select * from users order by nmae desc limit 5;
+ERROR 1054 (42S22): Unknown column 'nmae' in 'order clause'
+MariaDB [blog_app]> select * from users order by name desc limit 5;
++----+---------+-------------------+----------+-------+------+-------------------+---------------------+
+| id | name    | email             | password | score | sex  | memo              | created             |
++----+---------+-------------------+----------+-------+------+-------------------+---------------------+
+|  8 | tan     | tan@gmail.com     | xxx      |   1.1 | male | hogehogeheogegehe | 2012-07-12 11:00:00 |
+|  1 | taguchi | taguchi@gmail.com | xxx      |   5.5 | male | hogehogeheogegehe | 2012-06-12 11:00:00 |
+|  6 | sas     | sas@gmail.com     | xxx      |   4.5 | male | hogehogeheogegehe | 2012-09-12 11:00:00 |
+|  7 | kim     |                   | xxx      |   7.4 | male | hogehogeheogegehe | 2012-10-12 11:00:00 |
+|  4 | fkoji   | fkozi@gmail.com   | xxx      |   8.2 | male | hogehogeheogegehe | 2012-07-12 11:00:00 |
++----+---------+-------------------+----------+-------+------+-------------------+---------------------+
+5 rows in set (0.01 sec)
+
+MariaDB [blog_app]> select * from users order by name desc limit 2,2;
++----+------+---------------+----------+-------+------+-------------------+---------------------+
+| id | name | email         | password | score | sex  | memo              | created             |
++----+------+---------------+----------+-------+------+-------------------+---------------------+
+|  6 | sas  | sas@gmail.com | xxx      |   4.5 | male | hogehogeheogegehe | 2012-09-12 11:00:00 |
+|  7 | kim  |               | xxx      |   7.4 | male | hogehogeheogegehe | 2012-10-12 11:00:00 |
++----+------+---------------+----------+-------+------+-------------------+---------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [blog_app]> select count() from users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') from users' at line 1
+MariaDB [blog_app]> select count(*) from users;
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select distinc count(*) from users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'count(*) from users' at line 1
+MariaDB [blog_app]> select distinct count(*) from users;
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select distinct count(sex) from users;
++------------+
+| count(sex) |
++------------+
+|          6 |
++------------+
+1 row in set (0.00 sec)
+
+MariaDB [blog_app]> select distinct sex from users;
++------+
+| sex  |
++------+
+| male |
++------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select sex, average(score) from users group by team;
+ERROR 1305 (42000): FUNCTION blog_app.average does not exist
+MariaDB [blog_app]> select sex, avg(score) from users group by team;
+ERROR 1054 (42S22): Unknown column 'team' in 'group statement'
+MariaDB [blog_app]> select sex, avg(score) from users group by sex;
++------+-------------------+
+| sex  | avg(score)        |
++------+-------------------+
+| male | 4.816666666666666 |
++------+-------------------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select email, length(email) from users;
++-------------------+---------------+
+| email             | length(email) |
++-------------------+---------------+
+|                   |             0 |
+| dot@gmail.com     |            13 |
+| fkozi@gmail.com   |            15 |
+| sas@gmail.com     |            13 |
+| taguchi@gmail.com |            17 |
+| tan@gmail.com     |            13 |
++-------------------+---------------+
+6 rows in set (0.05 sec)
+
+MariaDB [blog_app]> select concat(name, '(', sex, ')') from users;
++-----------------------------+
+| concat(name, '(', sex, ')') |
++-----------------------------+
+| taguchi(male)               |
+| fkoji(male)                 |
+| dot(male)                   |
+| sas(male)                   |
+| kim(male)                   |
+| tan(male)                   |
++-----------------------------+
+6 rows in set (0.01 sec)
+
+MariaDB [blog_app]> select concat(name, '(', sex, ')') as label from users;
++---------------+
+| label         |
++---------------+
+| taguchi(male) |
+| fkoji(male)   |
+| dot(male)     |
+| sas(male)     |
+| kim(male)     |
+| tan(male)     |
++---------------+
+6 rows in set (0.01 sec)
+
+MariaDB [blog_app]> select name substring(name, 1,1) from users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'substring(name, 1,1) from users' at line 1
+MariaDB [blog_app]> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2016-02-20 01:06:56 |
++---------------------+
+1 row in set (0.01 sec)
+
+MariaDB [blog_app]> select name, month(created) from users;
++---------+----------------+
+| name    | month(created) |
++---------+----------------+
+| taguchi |              6 |
+| fkoji   |              7 |
+| dot     |              8 |
+| sas     |              9 |
+| kim     |             10 |
+| tan     |              7 |
++---------+----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [blog_app]> select name, datediff(now(), created) from users;
++---------+--------------------------+
+| name    | datediff(now(), created) |
++---------+--------------------------+
+| taguchi |                     1348 |
+| fkoji   |                     1318 |
+| dot     |                     1287 |
+| sas     |                     1256 |
+| kim     |                     1226 |
+| tan     |                     1318 |
++---------+--------------------------+
+6 rows in set (0.01 sec)
+
+MariaDB [blog_app]> select email from users
+    -> ;
++-------------------+
+| email             |
++-------------------+
+|                   |
+| dot@gmail.com     |
+| fkozi@gmail.com   |
+| sas@gmail.com     |
+| taguchi@gmail.com |
+| tan@gmail.com     |
++-------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [blog_app]> update users set email = 'dot2@gmail.com' where id = 5;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [blog_app]> select email from users
+    -> ;
++-------------------+
+| email             |
++-------------------+
+|                   |
+| dot2@gmail.com    |
+| fkozi@gmail.com   |
+| sas@gmail.com     |
+| taguchi@gmail.com |
+| tan@gmail.com     |
++-------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [blog_app]> delete from users where score <= 3.0;
+Query OK, 2 rows affected (0.01 sec)
+
+MariaDB [blog_app]> desc users;
++----------+-----------------------+------+-----+---------+----------------+
+| Field    | Type                  | Null | Key | Default | Extra          |
++----------+-----------------------+------+-----+---------+----------------+
+| id       | int(11)               | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(255)          | YES  |     | NULL    |                |
+| email    | varchar(255)          | YES  | UNI | NULL    |                |
+| password | char(32)              | YES  |     | NULL    |                |
+| score    | double                | YES  | MUL | NULL    |                |
+| sex      | enum('male','female') | YES  |     | male    |                |
+| memo     | text                  | YES  |     | NULL    |                |
+| created  | datetime              | YES  |     | NULL    |                |
++----------+-----------------------+------+-----+---------+----------------+
+8 rows in set (0.02 sec)
+
+MariaDB [blog_app]> alter table users add full_name varchar(255) after name;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [blog_app]> desc users;
++-----------+-----------------------+------+-----+---------+----------------+
+| Field     | Type                  | Null | Key | Default | Extra          |
++-----------+-----------------------+------+-----+---------+----------------+
+| id        | int(11)               | NO   | PRI | NULL    | auto_increment |
+| name      | varchar(255)          | YES  |     | NULL    |                |
+| full_name | varchar(255)          | YES  |     | NULL    |                |
+| email     | varchar(255)          | YES  | UNI | NULL    |                |
+| password  | char(32)              | YES  |     | NULL    |                |
+| score     | double                | YES  | MUL | NULL    |                |
+| sex       | enum('male','female') | YES  |     | male    |                |
+| memo      | text                  | YES  |     | NULL    |                |
+| created   | datetime              | YES  |     | NULL    |                |
++-----------+-----------------------+------+-----+---------+----------------+
+9 rows in set (0.01 sec)
+
+MariaDB [blog_app]> alter table users change full_name varchar(100);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'varchar(100)' at line 1
+MariaDB [blog_app]> alter table users change full_name full_name2 varchar(100);
+Query OK, 4 rows affected (0.07 sec)               
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [blog_app]> desc users;
++------------+-----------------------+------+-----+---------+----------------+
+| Field      | Type                  | Null | Key | Default | Extra          |
++------------+-----------------------+------+-----+---------+----------------+
+| id         | int(11)               | NO   | PRI | NULL    | auto_increment |
+| name       | varchar(255)          | YES  |     | NULL    |                |
+| full_name2 | varchar(100)          | YES  |     | NULL    |                |
+| email      | varchar(255)          | YES  | UNI | NULL    |                |
+| password   | char(32)              | YES  |     | NULL    |                |
+| score      | double                | YES  | MUL | NULL    |                |
+| sex        | enum('male','female') | YES  |     | male    |                |
+| memo       | text                  | YES  |     | NULL    |                |
+| created    | datetime              | YES  |     | NULL    |                |
++------------+-----------------------+------+-----+---------+----------------+
+9 rows in set (0.01 sec)
+
+MariaDB [blog_app]> alter table users drop full_name;
+ERROR 1091 (42000): Can't DROP 'full_name'; check that column/key exists
+MariaDB [blog_app]> alter table users drop full_name2;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [blog_app]> alter table users add index email(email);
+ERROR 1061 (42000): Duplicate key name 'email'
+MariaDB [blog_app]> alter table users add index email (email);
+ERROR 1061 (42000): Duplicate key name 'email'
+MariaDB [blog_app]> alter table users add index email (email);
+ERROR 1061 (42000): Duplicate key name 'email'
+MariaDB [blog_app]> alter table users add index emailNum (email);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [blog_app]> desc users;
++----------+-----------------------+------+-----+---------+----------------+
+| Field    | Type                  | Null | Key | Default | Extra          |
++----------+-----------------------+------+-----+---------+----------------+
+| id       | int(11)               | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(255)          | YES  |     | NULL    |                |
+| email    | varchar(255)          | YES  | UNI | NULL    |                |
+| password | char(32)              | YES  |     | NULL    |                |
+| score    | double                | YES  | MUL | NULL    |                |
+| sex      | enum('male','female') | YES  |     | male    |                |
+| memo     | text                  | YES  |     | NULL    |                |
+| created  | datetime              | YES  |     | NULL    |                |
++----------+-----------------------+------+-----+---------+----------------+
+8 rows in set (0.01 sec)
+
+MariaDB [blog_app]> alter users drop index emailNum;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'users drop index emailNum' at line 1
+MariaDB [blog_app]> Ctrl-C -- exit!
+Aborted
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app /Applications/XAMPP/
+bin/             etc/             logs/            uninstall.app/   
+cgi-bin/         htdocs/          manager-osx.app/ xamppfiles/      
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app /Applications/XAMPP/htdocs/ 
+.DS_Store          applications.html  dashboard/         img/               php/               
+StudyForPhp/       bitnami.css        favicon.ico        index.php          webalizer/         
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app /Applications/XAMPP/htdocs/StudyForPhp/
+.DS_Store                    11.php                       21.php                       30.php
+.git/                        12.php                       22.php                       User.class.php
+04.php                       13.php                       23.php                       command.sql
+05.php                       14.php                       24.php                       drop table if exists users;
+06.php                       15.php                       25.php                       index.php
+07.php                       16.php                       26.php                       testcookie.php
+08.php                       17.php                       27.php                       testsession.php
+09.php                       19.php                       28.php                       
+10.php                       20.php                       29.php                       
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/command.sql 
+Enter password: 
+ERROR 1045 (28000): Access denied for user 'dbuser'@'localhost' (using password: YES)
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/command.sql 
+Enter password: 
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'create table users(
+	name varchar(255),
+	email varchar(255),
+)' at line 3
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/command.sql 
+Enter password: 
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'create table users(
+	name varchar(255),
+	email varchar(255)
+)' at line 3
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/command.sql 
+Enter password: 
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'create table users (
+	name varchar(255),
+	email varchar(255)
+)' at line 3
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/command.sql 
+Enter password: 
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.1.10-MariaDB Source distribution
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [blog_app]> select * from users
+    -> ;
++---------+-------------------+
+| name    | email             |
++---------+-------------------+
+| taguchi | taguchi@gmail.com |
++---------+-------------------+
+1 row in set (0.00 sec)
+
+MariaDB [blog_app]> mysqlCtrl-C -- exit!
+Aborted
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+-bash: /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql: No such file or directory
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app > /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+
+123qwe
+
+
+
+
+
+^@^CaberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app > /Applications/XAMPP/hs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+^CaberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+-bash: syntax error near unexpected token `<'
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app > < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+-bash: syntax error near unexpected token `<'
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Ctrl-C' at line 1
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysqldump -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+-- MySQL dump 10.16  Distrib 10.1.10-MariaDB, for osx10.6 (i386)
+--
+-- Host: localhost    Database: blog_app
+-- ------------------------------------------------------
+-- Server version	10.1.10-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('taguchi','taguchi@gmail.com');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-02-20  2:00:39
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Ctrl-C' at line 1
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Ctrl-C' at line 1
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+-bash: /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql: No such file or directory
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysqldump -u dbuser -p blog_app > /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+aberintaronoAir:~ aberintaro$ /Applications/XAMPP/xamppfiles/bin/mysql -u dbuser -p blog_app < /Applications/XAMPP/htdocs/StudyForPhp/blog_app.dump.sql;
+Enter password: 
+aberintaronoAir:~ aberintaro$ 

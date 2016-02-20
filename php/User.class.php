@@ -1,11 +1,13 @@
-
 <?php
 #User.class.php
+
+
+namespace Dotinsall\Lib;
 
 class User{
 	public $name;
 	public function __construct($name){
-		$this->name = name;
+		$this->name = $name;
 
 	}
 
@@ -14,6 +16,3 @@ class User{
 
 	}
 }
-
-
-
