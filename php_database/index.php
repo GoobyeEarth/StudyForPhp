@@ -1,23 +1,11 @@
 <?php
-#11
+#12
 
 
 define('DB_DATABASE', 'dotinstall_db');
 define('DB_USERNAME', 'dbuser');
 define('DB_PASSWORD', '123qwe');
 define('PDO_DSN', 'mysql:dbhost=localhost;dbname=' . DB_DATABASE);
-
-
-class User{
-	// public $id;
-	// public $name;
-	// public $score;
-
-	public function show(){
-		echo "$this->name ($this->score)";
-
-	}
-}
 
 
 
@@ -27,18 +15,20 @@ try {
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-  $stmt = $db->query("select * from users");
+  // $stmt = $db->prepare("update users set score = :score where name = :name");
+  // $stmt->execute([
+  // 	':score' => 100,
+  // 	'name' => 'taguchi'
+  // ]);
+  // echo 'row update: ' . $stmt->rowCount();
 
 
-  $users = $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+  $stmt = $db->prepare("delete from users where name = :name");
+  $stmt->execute([
+  	'name' => 'taguchi'
+  ]);
+  echo 'row deleted: ' . $stmt->rowCount();  
 
-
-
-  foreach ($users as $user) {
-  	$user->show();
-  }
-
-  echo $stmt->rowCount() ." recode found.";
 
   //disconnect
   $db = null;
