@@ -1,32 +1,41 @@
 <?php
-#10
+#11
 
 
 define('DB_DATABASE', 'dotinstall_db');
 define('DB_USERNAME', 'dbuser');
 define('DB_PASSWORD', '123qwe');
 define('PDO_DSN', 'mysql:dbhost=localhost;dbname=' . DB_DATABASE);
+
+
+class User{
+	// public $id;
+	// public $name;
+	// public $score;
+
+	public function show(){
+		echo "$this->name ($this->score)";
+
+	}
+}
+
+
+
 try {
   
   $db = new PDO(PDO_DSN, DB_USERNAME, DB_PASSWORD);
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  // $stmt = $db->prepare("select score from users where score > ?");
-  // $stmt->execute([60]);
 
-  // $stmt= $db->prepare("select name from users where name like ?");
-  // $stmt->execute(['%t%']);
-  $stmt = $db->prepare("select score from users order by score desc limit ?");
-  $stmt->bindValue(1, 1, PDO::PARAM_INT);
-  $stmt->execute();
+  $stmt = $db->query("select * from users");
 
 
-  $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $users = $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
 
 
 
   foreach ($users as $user) {
-  	var_dump($user);
+  	$user->show();
   }
 
   echo $stmt->rowCount() ." recode found.";
@@ -35,7 +44,7 @@ try {
   $db = null;
   
 }catch (PDOException $e){
-	echo $e->getMassage();
+	echo $e->getMessage();
 	exit;
 
 }
